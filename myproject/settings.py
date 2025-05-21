@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://shalender-production.up.railway.app/',
+    'https://shalender-production.up.railway.app',
 ]
 
 MIDDLEWARE = [
