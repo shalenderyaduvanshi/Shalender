@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List & Create</title>
+</head>
+<body>
+    <h1>Add New Product</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Product</button>
+    </form>
+
+    <h2>All Products</h2>
+    <ul>
+        {% for product in products %}
+        <li>
+            <strong>{{ product.product_name }}</strong> - ${{ product.price }}
+            <a href="{% url 'product-detail' product.id %}">View Details</a>
+        </li>
+        {% empty %}
+        <li>No products yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
