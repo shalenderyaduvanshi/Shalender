@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     "myapp"
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://shalender-production.up.railway.app/',
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
