@@ -67,3 +67,23 @@ def product_list_create_view(request):
 def product_detail_view(request, pk):
     product = get_object_or_404(Product, pk=pk)
     return render(request, 'myapp/product_detail.html', {'product': product})
+
+
+def product_update_view(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('product-detail', pk=pk)
+    else:
+        form = ProductForm(instance=product)
+    return render(request, 'myapp/product_update.html', {'form': form, 'product': product})
+
+
+def product_delete_view(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('product-list-create')
+    return render(request, 'myapp/product_delete.html', {'product': product})
